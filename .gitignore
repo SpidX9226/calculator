@@ -1,0 +1,24 @@
+# Qt Creator
+*.user
+*.user.*
+
+# Сборки
+build-*/
+*.pro.user
+*.autosave
+
+# Бинарные и временные файлы
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.app
+
+# Отладочная информация
+debug/
+release/
+
+# Дополнительно (если нужно)
+.DS_Store
+Thumbs.db
