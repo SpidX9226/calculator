@@ -8,6 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QList<QPushButton*> digitButtons = {
+        ui->pushButton_zero, ui->pushButton_one, ui->pushButton_two,
+        ui->pushButton_three, ui->pushButton_four, ui->pushButton_five,
+        ui->pushButton_six, ui->pushButton_seven, ui->pushButton_eight,
+        ui->pushButton_nine
+    };
+
+    for (QPushButton* button : digitButtons) {
+        connect(button, &QPushButton::clicked, this, &MainWindow::onDigitButtonClicked);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -15,74 +25,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_one_clicked()
-{
-    calc_str.append("1");
-    ui->label_calc->setText(calc_str);
+void MainWindow::onDigitButtonClicked(){
+    QPushButton* button = qobject_cast<QPushButton*>(sender());
+    if (button) {
+        calc_str.append(button->text());
+        ui->label_calc->setText(calc_str);
+    }
 }
-
-void MainWindow::on_pushButton_two_clicked()
-{
-    calc_str.append("2");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_three_clicked()
-{
-    calc_str.append("3");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_four_clicked()
-{
-    calc_str.append("4");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_five_clicked()
-{
-    calc_str.append("5");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_six_clicked()
-{
-    calc_str.append("6");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_seven_clicked()
-{
-    calc_str.append("7");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_eight_clicked()
-{
-    calc_str.append("8");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_nine_clicked()
-{
-    calc_str.append("9");
-    ui->label_calc->setText(calc_str);
-}
-
-
-void MainWindow::on_pushButton_zero_clicked()
-{
-    calc_str.append("0");
-    ui->label_calc->setText(calc_str);
-}
-
 
 void MainWindow::on_pushButton_plus_clicked()
 {
